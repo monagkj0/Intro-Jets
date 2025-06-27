@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
     JetDefinition jet_def(antikt_algorithm, R);
 
     // Set up ROOT output
-    std::string filename = "dijet_events_ADD_bsm_" + std::to_string(seed) + "_LT" + std::to_string(lambdaT) + ".root";
+    std::string filename = "dijet_events_ADD_bsm_" + std::to_string(seed) + "_LT_" + std::to_string(lambdaT) + ".root";
     TFile* outfile = new TFile(filename.c_str(), "RECREATE");
     TTree* tree = new TTree("dijets", "Dijet Tree");
 
