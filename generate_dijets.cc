@@ -237,8 +237,8 @@ int main(int argc, char* argv[]) {
 
         for (const PseudoJet& c : jet1.constituents()) {
             jet1_Cons_Px.emplace_back(c.px());
-            jet1_Cons_Py.emplace_back(c.px());
-            jet1_Cons_Pz.emplace_back(c.px());
+            jet1_Cons_Py.emplace_back(c.py());
+            jet1_Cons_Pz.emplace_back(c.pz());
             jet1_Cons_E.push_back(c.E());
             int idx = c.user_index();
             if (idx >= 0 && idx < pythia.event.size()) {
@@ -250,8 +250,8 @@ int main(int argc, char* argv[]) {
 
         for (const PseudoJet& c : jet2.constituents()) {
             jet2_Cons_Px.emplace_back(c.px());
-            jet2_Cons_Py.emplace_back(c.px());
-            jet2_Cons_Pz.emplace_back(c.px());
+            jet2_Cons_Py.emplace_back(c.py());
+            jet2_Cons_Pz.emplace_back(c.pz());
             jet2_Cons_E.push_back(c.E());
             int idx = c.user_index();
             if (idx >= 0 && idx < pythia.event.size()) {
