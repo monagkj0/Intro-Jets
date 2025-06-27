@@ -54,11 +54,11 @@ int getJetPartonID(const PseudoJet& jet, const Event& event) {
 }
 
 int main(int argc, char* argv[]) {
-    // Parse random seed from command line
+    // Parse random seed and lambda value from command line
     int seed = 0;
+    int lambdaT = 10000;
     if (argc > 1) seed = std::stoi(argv[1]);
-
-    const int nEvents = 10000;
+    if (argc > 2) lambdaT = std::stoi(argv[2]);
 
     // Initialize Pythia
     Pythia pythia;
@@ -67,8 +67,7 @@ int main(int argc, char* argv[]) {
 
     pythia.readString("ExtraDimensionsLED:n = 6");
     pythia.readString("ExtraDimensionsLED:MD = 2000"); //Default value - fundamental scale of gravity in D = 4 + n dimensions
-    pythia.readString("ExtraDimensionsLED:LambdaT = 10000"); //CMS observed lower limit 10TeV, so here 10000 GeV
-
+    pythia.readString("ExtraDimensionsLED:LambdaT = " + std::to_string(lambdaT)); //CMS observed lower limit 10TeV, so default 10000 GeV
     
     pythia.readString("PhaseSpace:pTHatMin = 20."); //increase this?
     pythia.readString("Beams:idA = 2212");
@@ -86,7 +85,7 @@ int main(int argc, char* argv[]) {
     JetDefinition jet_def(antikt_algorithm, R);
 
     // Set up ROOT output
-    std::string filename = "dijet_events_ADD_bsm_" + std::to_string(seed) + ".root";
+    std::string filename = "dijet_events_ADD_bsm_" + std::to_string(seed) + "_LT" + std::to_string(lambdaT) + ".root";
     TFile* outfile = new TFile(filename.c_str(), "RECREATE");
     TTree* tree = new TTree("dijets", "Dijet Tree");
 
@@ -232,7 +231,7 @@ int main(int argc, char* argv[]) {
         x2  = pythia.info.x2pdf();
         Q2  = pythia.info.Q2Ren();
 
-        // Fill jet constituent momenta and IDs 
+        // Clear vector values 
         jet1_Cons_Px.clear();
         jet1_Cons_Py.clear();
         jet1_Cons_Pz.clear();
@@ -242,8 +241,9 @@ int main(int argc, char* argv[]) {
         jet2_Cons_Py.clear();        
         jet2_Cons_Pz.clear();        
         jet2_Cons_ID.clear();        
-        jet2_Cons_E.clear();        
-
+        jet2_Cons_E.clear();      
+        
+        // Fill jet constituent momenta and IDs 
         for (const PseudoJet& c : jet1.constituents()) {
             jet1_Cons_Px.emplace_back(c.px());
             jet1_Cons_Py.emplace_back(c.py());
