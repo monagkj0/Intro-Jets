@@ -64,17 +64,17 @@ int main(int argc, char* argv[]) {
 
     // Initialize Pythia
     Pythia pythia;
-    pythia.readString("HardQCD:all = on"); // HardQCD does not appear to be included in dijet framework 
-    pythia.readString("ExtraDimensionsLED:dijets = on");
+    pythia.readString("HardQCD:all = on");  
 
-    pythia.readString("ExtraDimensionsLED:n = 2");
-    pythia.readString("ExtraDimensionsLED:MD = 2000"); //Default value - fundamental scale of gravity in D = 4 + n dimensions
+    pythia.readString("ExtraDimensionsUnpart:LambdaU = 2500.0");
+    pythia.readString("ExtraDimensionsUnpart:lambda = 1.0");
+    pythia.readString("ExtraDimensionsUnpart:dU = 1.9");
+    pythia.readString("ExtraDimensionsUnpart:spinU = 0");
     pythia.readString("ExtraDimensionsLED:LambdaT = " + std::to_string(lambdaT)); 
     pythia.readString("ExtraDimensionsLED:CutOffmode = 2");
 
-    pythia.readString("PhaseSpace:pTHatMin = 20."); //increase this?
-    pythia.readString("PhaseSpace:mHatMin = 1000."); //values from Uzziel's settings
-    pythia.readString("PhaseSpace:mHatMax = 2000."); //values from Uzziel's settings
+    pythia.readString("PhaseSpace:pTHatMin = 20."); 
+    pythia.readString("PhaseSpace:mHatMin = 2000.");
     pythia.readString("Beams:idA = 2212");
     pythia.readString("Beams:idB = 2212");
     pythia.readString("Beams:eCM = 13600.");
