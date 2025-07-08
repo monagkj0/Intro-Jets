@@ -16,7 +16,7 @@ int traceToHardProcess(const Particle& particle, const Event& event) {
     while (current > 0) {
         const Particle& mother = event[current];
         // Check if this is a parton from the hard process
-        if (mother.statusAbs() == 23 || mother.statusAbs() == 21) {
+        if (mother.statusAbs() == 23) {
             return mother.id();
         }
         current = mother.mother1();
