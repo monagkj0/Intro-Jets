@@ -1,1 +1,3 @@
 # Intro-Jets
+
+This serves as a record of my CERN Summer Student project and my research into dijet angular distributions with the LHCb. Over the course of the summer, I have investigated the properties of dijets and worked with Monte Carlo simulations to examine potential Beyond Standard Model effects that could be seen by observing dijets. This project is a non-resonant search for new physics which provides sensitivity for Parton Distribution Functions as well as dijet distributions between different types of jets. Moreover, I provide a discussion and training of a Boosted Decision Tree for jet classification between quark and gluon initiated jets.
